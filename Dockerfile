@@ -1,4 +1,5 @@
 FROM php:7.3-fpm
+ARG XDEBUG_VERSION="xdebug-2.9.0"
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -14,7 +15,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 # RUN yes | pecl install xdebug
 # RUN apt-get install php7.3-xdebug
-RUN apt-get install php-xdebug
+RUN apt-get install ${XDEBUG_VERSION}
 
 RUN docker-php-ext-install mysqli
 
