@@ -106,10 +106,10 @@ RUN pecl install mcrypt-1.0.4 && docker-php-ext-enable mcrypt
 RUN apt install -y libxslt-dev
 RUN docker-php-ext-install xsl
 
-RUN apt-get -y install phpcpd
-RUN apt-get -y install php-codesniffer
-RUN apt-get -y install phploc
-RUN apt-get install php-mbstring
+RUN apt-get update && apt-get -y install phpcpd \
+php-codesniffer \
+phploc \
+php-mbstring
 
 RUN apt -y install php7.3-dev php-pear
 RUN pecl channel-update pecl.php.net ; pecl clear-cache
