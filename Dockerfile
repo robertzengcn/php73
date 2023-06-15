@@ -111,4 +111,8 @@ RUN apt-get -y install php-codesniffer
 RUN apt-get -y install phploc
 RUN apt-get install php-mbstring
 
+RUN apt -y install php7.3-dev php-pear
+RUN pecl channel-update pecl.php.net ; pecl clear-cache
+RUN pecl install xdebug
+
 
