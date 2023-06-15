@@ -1,6 +1,7 @@
 FROM php:7.3-fpm
 # ARG XDEBUG_VERSION="xdebug-2.9.0"
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -y && apt-get upgrade -y
+RUN  apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
@@ -106,7 +107,7 @@ RUN pecl install mcrypt-1.0.4 && docker-php-ext-enable mcrypt
 RUN apt install -y libxslt-dev
 RUN docker-php-ext-install xsl
 
-RUN apt-get update && apt-get -y install phpcpd \
+RUN apt-get -y install phpcpd \
 php-codesniffer \
 phploc \
 php-mbstring
