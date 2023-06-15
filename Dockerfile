@@ -12,7 +12,8 @@ RUN pecl install  -o -f redis \
 
 RUN docker-php-ext-install pdo pdo_mysql
 
-RUN yes | pecl install xdebug
+# RUN yes | pecl install xdebug
+RUN apt-get install php7.3-xdebug
 
 RUN docker-php-ext-install mysqli
 
