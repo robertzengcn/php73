@@ -1,5 +1,5 @@
 FROM php:7.3-fpm
-ARG XDEBUG_VERSION="xdebug-2.9.0"
+# ARG XDEBUG_VERSION="xdebug-2.9.0"
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -15,27 +15,27 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 # RUN yes | pecl install xdebug
 # RUN apt-get install php7.3-xdebug
-RUN apt-get install ${XDEBUG_VERSION}
+# RUN apt-get install ${XDEBUG_VERSION}
 
 RUN docker-php-ext-install mysqli
 
-RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.mode=develop,debug,trace" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.profiler_enable=false" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.auto_trace=true" >> /usr/local/etc/php/php.ini \
-    # && echo "xdebug.trace_output_dir = /var/www/html/amilog/" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    # && echo "xdebug.trace_output_name=trace.%t%R" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    # && echo "xdebug.profiler_output_dir = /var/www/html/amilog/" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.max_nesting_level=1500" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.trace_output_name=trace.%t" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    # && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini
-    && echo "xdebug.start_with_request=no" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.trace_output_dir=/var/www/html/log" >> /usr/local/etc/php/conf.d/xdebug.ini
+# RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.mode=develop,debug,trace" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.profiler_enable=false" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.auto_trace=true" >> /usr/local/etc/php/php.ini \
+#     # && echo "xdebug.trace_output_dir = /var/www/html/amilog/" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     # && echo "xdebug.trace_output_name=trace.%t%R" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     # && echo "xdebug.profiler_output_dir = /var/www/html/amilog/" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.max_nesting_level=1500" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.remote_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.trace_output_name=trace.%t" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     # && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini
+#     && echo "xdebug.start_with_request=no" >> /usr/local/etc/php/conf.d/xdebug.ini \
+#     && echo "xdebug.trace_output_dir=/var/www/html/log" >> /usr/local/etc/php/conf.d/xdebug.ini
     
 
 
