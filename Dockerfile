@@ -1,4 +1,10 @@
 FROM php:7.3-fpm
+
+RUN apt-get -y install phpcpd \
+php-codesniffer \
+phploc \
+php-mbstring
+
 # ARG XDEBUG_VERSION="xdebug-2.9.0"
 RUN apt-get update -y && apt-get upgrade -y
 RUN  apt-get install -y \
@@ -107,10 +113,7 @@ RUN pecl install mcrypt-1.0.4 && docker-php-ext-enable mcrypt
 RUN apt install -y libxslt-dev
 RUN docker-php-ext-install xsl
 
-RUN apt-get -y install phpcpd \
-php-codesniffer \
-phploc \
-php-mbstring
+
 
 RUN apt -y install php7.3-dev php-pear
 RUN pecl channel-update pecl.php.net ; pecl clear-cache
